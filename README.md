@@ -7,7 +7,9 @@ To develop a neural network regression model for the given dataset.
 Explain the problem statement
 
 ## Neural Network Model
-Include the neural network model diagram.
+
+<img width="1096" height="733" alt="image" src="https://github.com/user-attachments/assets/bc9c13ef-1c58-4bda-a37a-b89a6f135a13" />
+
 
 ## DESIGN STEPS
 ### STEP 1: 
@@ -44,37 +46,67 @@ Use the trained model to predict  for a new input value .
 
 ## PROGRAM
 
-### Name:
+### Name:Dinesh V
 
-### Register Number:
+### Register Number: 212224040076
 
 ```python
+# Name:Dinesh V
+# Register Number:212224040076
 class NeuralNet(nn.Module):
-    def __init__(self):
+  def __init__(self):
         super().__init__()
-        #Include your code here
+        self.fc1 = nn.Linear(1,8)
+        self.fc2 = nn.Linear(8,10)
+        self.fc3 = nn.Linear(10,1)
+        self.relu = nn.ReLU()
+        self.history = {'loss':[]}
+
+  def forward(self,x):
+        x = self.relu(self.fc1(x))
+        x = self.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
 
 
 
-# Initialize the Model, Loss Function, and Optimizer
+lig = NeuralNet()
+criterion = nn.MSELoss()
+optimizer = optim.RMSprop (lig. parameters(),lr=0.001)
 
 
 
+# Name:Dinesh V
+# Register Number:212224040076
 def train_model(ai_brain, X_train, y_train, criterion, optimizer, epochs=2000):
-    #Include your code here
+  for epoch in range (epochs):
+    optimizer. zero_grad()
+    loss = criterion(ai_brain(X_train),y_train)
+    loss. backward()
+    optimizer.step()
+    lig.history['loss'].append(loss.item())
+    if epoch % 200 == 0:
+      print(f'Epoch [{epoch}/{epochs}], Loss: {loss.item():.6f}')
 
 ```
 
 ### Dataset Information
-Include screenshot of the generated data
+
+<img width="188" height="243" alt="image" src="https://github.com/user-attachments/assets/93215e83-3caa-4e23-96ca-ac1e5a0144e4" />
+
 
 ### OUTPUT
 
+<img width="437" height="243" alt="image" src="https://github.com/user-attachments/assets/9937c32b-07b2-4610-91df-5afd8416ac31" />
+
+
 ### Training Loss Vs Iteration Plot
-Include your plot here
+
+<img width="800" height="582" alt="image" src="https://github.com/user-attachments/assets/0de4ffcf-18d6-4c1b-99d0-3f6f5dfa5073" />
 
 ### New Sample Data Prediction
-Include your sample input and output here
+
+<img width="867" height="126" alt="image" src="https://github.com/user-attachments/assets/ffcfd942-c78f-4d9d-a009-58a9b6a57277" />
 
 ## RESULT
 Thus, a neural network regression model was successfully developed and trained using PyTorch.
